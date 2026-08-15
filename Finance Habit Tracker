@@ -1,0 +1,36 @@
+Core App Blueprint: "WealthMine"
+System Role / Goal:
+Build a cross-platform mobile application that combines daily income tracking with productivity habit logging, backed by home/lock-screen interactive widgets and automated background services.
+1. Primary Feature Modules
+A. Income & Earnings Tracker
+ * Quick-Log Entry: Floating "+" button opening a 2-second input modal (Amount, Source/Client Tag, Paid/Pending status).
+ * Financial Dashboard: Real-time calculation showing Today’s Revenue, Weekly Earnings, and Monthly Total.
+ * Tax/Savings Auto-Deduction: Option to automatically set aside a custom percentage (e.g., 25% for taxes/savings) to display true net income.
+B. Habit & Goal Logger
+ * Habit Engine: Support for three entry types:
+   * Checkbox (Completed / Not Completed)
+   * Counter (e.g., 5 pitch emails sent)
+   * Timer (e.g., 2 hours of deep work)
+ * Streak System: Visual streak counter that increments when daily target habits are completed.
+ * Effort-to-Earnings Correlation: An automated insight card showing how completed habits directly relate to daily earnings (e.g., "Days you complete 2+ hours of deep work yield 40% higher earnings").
+2. Widget Architecture (Home & Lock-Screen)
+ * Interactive Lock-Screen Widget:
+   * Displays today’s running income total and current habit streak.
+   * Includes two quick-action buttons: + Log Cash and + Log Habit.
+ * Home-Screen Dynamic Widgets (Small, Medium, Large):
+   * Small: Live progress ring showing daily earnings target percentage.
+   * Medium: Today’s earnings total alongside top 3 priority daily habits.
+   * Updates instantly in the background whenever a quick action is triggered.
+3. Background Services & Automation
+ * Silent Background Service:
+   * Listens for widget interaction taps without launching the main full-screen app.
+   * Recalculates widget data and updates widget UI assets continuously in the background.
+ * Automated Evening Recaps:
+   * A local notification triggers daily at 8:00 PM with a customized text string:
+     "Today's Summary: You earned [Currency][Amount] across [X] jobs and completed [Y/Z] habits. Keep up the streak!"
+ * Midnight Automated Reset:
+   * Automatically rolls over daily habit checkboxes at 00:00 local time while archiving yesterday's financial data to historical charts.
+4. UI/UX & Technical Rules
+ * Design Language: Modern, high-contrast dark/light mode interface; card-based dashboard layout.
+ * Performance: App launch and widget interaction response time under 1 second.
+ * Data Storage: Offline-first architecture using local storage (SQLite/WatermelonDB/AsyncStorage) with optional encrypted cloud backup (Firebase/Supabase).
