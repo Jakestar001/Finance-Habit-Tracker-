@@ -9,6 +9,21 @@ class _ExpenseEntryState extends State<ExpenseEntry> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  DateTime _selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +59,25 @@ class _ExpenseEntryState extends State<ExpenseEntry> {
                 },
               ),
               SizedBox(height: 20),
+              Row(
+                children: [
+                  Text(
+                    "Date: ${_selectedDate.toLocal().toString().split(' ')[0]}",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  Spacer(),
+                  ElevatedButton(
+                    onPressed: () => _selectDate(context),
+                    child: Text('Select Date'),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Process data
+                    final amount = _amountController.text;
+                    final description = _descriptionController.text;
                   }
                 },
                 child: Text('Save Expense'),
