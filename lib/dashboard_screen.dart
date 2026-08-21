@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'habit_entry.dart';
-import 'income_entry.dart';
-import 'expense_entry.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -11,39 +8,70 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications_none),
+            onPressed: () {},
+          ),
+        ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HabitEntry()),
-                );
-              },
-              child: const Text('Go to Habit Entry'),
+            // Profile Header
+            Row(
+              children: [
+                const CircleAvatar(radius: 30),
+                const SizedBox(width: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Welcome Back, User!',
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const IncomeEntry()),
-                );
-              },
-              child: const Text('Go to Income Entry'),
+            const SizedBox(height: 24),
+            // Financial Summary
+            const ExpansionTile(
+              title: Text('Financial Summary'),
+              leading: Icon(Icons.account_balance_wallet),
+              children: [
+                ListTile(
+                  title: Text('Monthly Income'),
+                  trailing: Text('\$3,200.00', style: TextStyle(color: Colors.green)),
+                ),
+                ListTile(
+                  title: Text('Monthly Expenses'),
+                  trailing: Text('\$1,850.50', style: TextStyle(color: Colors.red)),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ExpenseEntry()),
-                );
-              },
-              child: const Text('Go to Expense Entry'),
+            const SizedBox(height: 16),
+            // Habits Tracker
+            const ExpansionTile(
+              title: Text('Habits Tracker'),
+              leading: Icon(Icons.track_changes),
+              children: [
+                CheckboxListTile(
+                  title: Text('Morning Exercise'),
+                  value: true,
+                  onChanged: null,
+                ),
+                CheckboxListTile(
+                  title: Text('Read 30 Minutes'),
+                  value: false,
+                  onChanged: null,
+                ),
+                CheckboxListTile(
+                  title: Text('Save \$10 Daily'),
+                  value: true,
+                  onChanged: null,
+                ),
+              ],
             ),
           ],
         ),
