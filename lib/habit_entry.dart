@@ -46,7 +46,7 @@ class _HabitEntryScreenState extends State<HabitEntryScreen> {
               ),
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
-                value: _selectedFrequency,
+                initialValue: _selectedFrequency,
                 items: ['Daily', 'Weekly'].map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
