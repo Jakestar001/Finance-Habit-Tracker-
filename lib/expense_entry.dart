@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 class ExpenseEntry extends StatefulWidget {
   @override
   _ExpenseEntryState createState() => _ExpenseEntryState();
@@ -24,7 +25,20 @@ class _ExpenseEntryState extends State<ExpenseEntry> {
       });
     }
   }
+_saveExpenseData
+  Future<void> _saveExpenseData() async {
+ if (_formKey.currentState!.validate()) {
+ final amount = _amountController.text;
+ final description = _descriptionController.text;
+ final date = _selectedDate.toIso8601String();
 
+ final response = await http.post(
+ Uri.parse('https://your-api-endpoint.com/expenses'),
+ headers: <String, String>{
+ 'Content-Type': 'application/json; charset=UTF-8',
+ },
+ body: jsonEncode(<String, String>{
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,19 +87,8 @@ class _ExpenseEntryState extends State<ExpenseEntry> {
                 ],
               ),
               SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    final amount = _amountController.text;
-                    final description = _descriptionController.text;
-                  }
-                },
-                child: Text('Save Expense'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+ElevatedButton(
+  onPressed: () => _saveExpenseData(),
+  child: Text('Save Expense'),
+),
+              
