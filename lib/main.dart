@@ -5,6 +5,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Initialize Plaid and Stripe
+await PlaidManager.initialize();
+await StripeManager.initialize();
+
   runApp(const MyApp());
 }
 
