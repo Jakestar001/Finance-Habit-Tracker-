@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -12,14 +16,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Finance & Habits App',
       debugShowCheckedModeBanner: false,
+      // Add these for localization
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [ Locale('en', 'US'), Locale('es', 'ES'), Locale('fr', 'FR'), Locale('ar', 'SA'), Locale('zh', 'CN'), Locale('hi', 'IN'), Locale('pcm', 'NG'), Locale('yo', 'NG'), Locale('ha', 'NG'), Locale('ig', 'NG'), ]
+      ],
       theme: ThemeData(
         brightness: Brightness.light,
-        primaryColor: const Color(0xFF0F2042), // Navy Blue
-        scaffoldBackgroundColor: const Color(0xFFF3F5F7), // Light clean background
+        primaryColor: const Color(0xFF0F2042),
+        scaffoldBackgroundColor: const Color(0xFFF3F5F7),
         fontFamily: 'Inter',
         colorScheme: const ColorScheme.light(
           primary: Color(0xFF0F2042),
-          secondary: Color(0xFF00C9A7), // Mint Green
+          secondary: Color(0xFF00C9A7),
         ),
         textTheme: const TextTheme(
           displayLarge: TextStyle(
@@ -39,6 +51,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({super.key});
