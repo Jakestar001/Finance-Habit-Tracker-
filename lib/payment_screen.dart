@@ -20,7 +20,16 @@ class PaymentScreen extends StatelessWidget {
 
  Navigator.pushReplacementNamed(context, '/payment_success');
  }
-
+  else {
+   Navigator.pop(context)
+    showDialog(
+    context: context,builder: (context) => AlertDialog(
+     title: const Text('Payment Failed'),
+     content: const Text('Please try again.'),
+     actions: [
+      TextButton(onPressed: () => Navigator.pop(context), child: const Text('OK'))];
+     }
+      
  @override
  Widget build(BuildContext context) {
  final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
