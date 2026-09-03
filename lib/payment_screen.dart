@@ -13,8 +13,8 @@ class PaymentScreen extends StatelessWidget {
  );
 
  // Simulate API call
- await Future.delayed(const Duration(seconds: 2));
-
+ final response = await http.post(Uri.parse('YOUR_SERVER_URL'), body: ...);
+ if (response.statusCode == 200) {
  if (!context.mounted) return;
  Navigator.pop(context); // Close the loading dialog
 
