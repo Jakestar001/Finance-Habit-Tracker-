@@ -38,8 +38,10 @@ _saveExpenseData
  'Content-Type': 'application/json; charset=UTF-8',
  },
  body: jsonEncode(<String, String>{
- 
-  @override
+  'amount': amount, 'description': description, 'date': date,
+});
+   
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
