@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-
+import 'ai_chat_service.dart';
 class AIChatScreen extends StatefulWidget {
  const AIChatScreen({Key? key}) : super(key: key);
 
@@ -13,18 +13,13 @@ class _AIChatScreenState extends State<AIChatScreen> {
  final ScrollController _scrollController = ScrollController();
  final List<ChatMessage> _messages = [];
  bool _isLoading = false;
- late final GenerativeModel _model;
- late final ChatSession _chat;
-
+ late final AIChatService _chatService;
  @override
  void initState() {
  super.initState();
  // Initialize the model with your API key
  // Replace YOUR_API_KEY with your actual Gemini API key
- const apiKey = 'dotenv.env['API_KEY']';
- _model = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
- _chat = _model.startChat();
- }
+ _chatService = AIChatService();
 
  Future<void> _sendMessage() async {
  final messageText = _textController.text.trim();
