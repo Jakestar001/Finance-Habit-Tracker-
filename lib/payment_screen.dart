@@ -3,10 +3,28 @@ import 'package:flutter/material.dart';
 class PaymentScreen extends StatelessWidget {
  const PaymentScreen({Key? key}) : super(key: key);
 
+ Future<void> _processPayment(BuildContext context) async {
+ showDialog(
+ context: context,
+ barrierDismissible: false,
+ builder: (context) => const Center(
+ child: CircularProgressIndicator(),
+ ),
+ );
+
+ // Simulate API call
+ await Future.delayed(const Duration(seconds: 2));
+
+ if (!context.mounted) return;
+ Navigator.pop(context); // Close the loading dialog
+
+ Navigator.pushReplacementNamed(context, '/payment_success');
+ }
+
  @override
  Widget build(BuildContext context) {
  final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
- final String selectedPlan = args['plan'] ?? 'Standard';
+ final selectedPlan = args['plan'] ?? 'Standard';
 
  return Scaffold(
  appBar: AppBar(
@@ -17,4 +35,21 @@ class PaymentScreen extends StatelessWidget {
  padding: const EdgeInsets.all(16.0),
  child: Column(
  mainAxisAlignment: MainAxisAlignment.center,
- children: 
+ children: [
+ Text(
+ 'Completing payment for $selectedPlan Plan',
+ style: Theme.of(context).textTheme.headlineSmall,
+ textAlign: TextAlign.center,
+ ),
+ const SizedBox(height: 32),
+ ElevatedButton(
+ onPressed: () => _processPayment(context),
+ child: const Text('Pay Now'),
+ ),
+ ],
+ ),
+ ),
+ ),
+ );
+ }
+}
