@@ -9,7 +9,7 @@ void main() async {
   // Initialize Plaid and Stripe
 await PlaidManager.initialize();
 await StripeManager.initialize();
-
+GetIt.I.registerSingleton<SubscriptionService>(SubscriptionService());
   runApp(const MyApp());
 }
 
