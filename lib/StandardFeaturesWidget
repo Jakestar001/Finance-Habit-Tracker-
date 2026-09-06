@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+
+class StandardFeaturesWidget extends StatelessWidget {
+  const StandardFeaturesWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.all(16.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Text(
+              'Standard Tier Features',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text('• Increased habit limit'),
+            Text('• Budget customization'),
+            Text('• Monthly reports'),
+            Text('• Data backup'),
+          ],
+        ),
+      ),
+    );
+  }
+}
