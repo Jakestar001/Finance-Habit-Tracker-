@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+
+class PremiumFeaturesWidget extends StatelessWidget {
+  const PremiumFeaturesWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.all(16.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Text(
+              'Premium Tier Features',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text('• Advanced AI insights with financial forecasting'),
+            Text('• Personalized coaching'),
+            Text('• Unlimited habits and custom categories'),
+            Text('• Automated syncing for external bank accounts'),
+            Text('• Community Insights and Peer Communication'),
+            Text('• Receipt scanning and PDF document processing'),
+            Text('• Seamless cloud syncing and multi-device sync'),
+            Text('• Goal setting with visual progress'),
+          ],
+        ),
+      ),
+    );
+  }
+}
