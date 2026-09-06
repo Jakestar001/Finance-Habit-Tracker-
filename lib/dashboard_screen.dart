@@ -21,6 +21,18 @@ class DashboardScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Consumer<SubscriptionProvider>(
+  builder: (context, provider, child) {
+    if (provider.isPremium) {
+      return PremiumFeaturesWidget();
+    } else if (provider.isStandard) {
+      return StandardFeaturesWidget();
+    } else {
+      return Container();
+    }
+  },
+)
+
             Row(
               children: [
                 const CircleAvatar(radius: 30),
