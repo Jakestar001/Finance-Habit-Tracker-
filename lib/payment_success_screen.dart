@@ -30,6 +30,12 @@ class PaymentSuccessScreen extends StatelessWidget {
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
+                  if (tier == 'premium') {
+  Provider.of<SubscriptionProvider>(context, listen: false).setPremium(true);
+} else if (tier == 'standard') {
+  Provider.of<SubscriptionProvider>(context, listen: false).setStandard(true);
+                  }
+                  
                   Navigator.pushReplacementNamed(context, '/dashboard');
                 },
                 child: const Text('Go to Dashboard'),
