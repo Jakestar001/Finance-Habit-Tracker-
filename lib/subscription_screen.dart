@@ -19,12 +19,27 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     {
       'name': 'Standard',
       'price': '\$9.99 / month',
-      'features': ['Increased habit tracking limit', 'Budget customization for tracking', 'Monthly financial reports for deeper insights', 'Data backup for information security']
+      'features': ['Increased habit tracking limit',
+                   'Budget customization for tracking', 
+                   'Monthly financial reports for deeper insights', 
+                   'Data backup for information security']
     },
     {
       'name': 'Premium',
       'price': '\$19.99 / month',
-      'features': [ 'Advanced AI insights with financial forecasting and personalized coaching.', 'Unlimited habits and custom categories.', 'Automated syncing for external bank accounts.', 'Community Insights and Peer Communication feature facilitating secure file sharing for shared financial tips and strategies, supported by robust privacy controls.', 'Receipt scanning and PDF document processing for automatic expense classification', 'Seamless cloud syncing and no ads', 'Goal setting with visual progress', 'Multi-currency support', 'Custom themes including light, dark, and system default modes', 'Priority customer support and PDF exports', 'Biometric security, PIN, and password options', 'API keys for automated transactions', 'Advanced push notifications and daily reminders for goals and habits, with customizable alerts']
+      'features': [ 'Advanced AI insights with financial forecasting and personalized coaching.', 
+                   'Unlimited habits and custom categories.', 
+                   'Automated syncing for external bank accounts.', 
+                   'Community Insights and Peer Communication feature facilitating secure file sharing for shared financial tips and strategies, supported by robust privacy controls.', 
+                   'Receipt scanning and PDF document processing for automatic expense classification', 
+                   'Seamless cloud syncing and no ads', 
+                   'Goal setting with visual progress', 
+                   'Multi-currency support', 
+                   'Custom themes including light, dark, and system default modes', 
+                   'Priority customer support and PDF exports', 
+                   'Biometric security, PIN, and password options', 
+                   'API keys for automated transactions', 
+                   'Advanced push notifications and daily reminders for goals and habits, with customizable alerts']
     },
   ];
 
