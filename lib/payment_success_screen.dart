@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PaymentSuccessScreen extends StatelessWidget {
-  const PaymentSuccessScreen({Key? key}) : super(key: key);
+final String tier;
+  const PaymentSuccessScreen({Key? key, required this.tier})
 
   @override
   Widget build(BuildContext context) {
